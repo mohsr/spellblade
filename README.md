@@ -1,4 +1,4 @@
-# text-blade
+# spellblade
 A browser-based text-based MMORPG built on Node.js
 
 Written by: Mohsin Rizvi
