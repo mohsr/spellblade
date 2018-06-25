@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 /* GET main page. */
 app.get('/', function(req, res) {
-    res.sendStatus(200);
+    res.sendFile('index.html');
 });
 
 /* Listen on a port. */
