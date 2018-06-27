@@ -1,3 +1,21 @@
 body {
-	color: darkgray;
+	background-color: darkgray;
+}
+
+#title {
+	text-align: center;
+	font-size: 36px;
+}
+
+#console {
+	background-color: black;
+	border-style: double;
+	border-color: white;
+	color: white;
+    width: auto;
+}
+
+#writebox {
+    background-color: black;
+    color: white;
 }
