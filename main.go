@@ -10,7 +10,7 @@ func main() {
     /* Grab environment variables. */
     port := os.Getenv("PORT")
     if port != nil {
-        port = 80
+        port = "80"
     }
 
     /* Setup static content serving. */
