@@ -8,12 +8,10 @@ import (
 )
 
 func main() {
-    /* Handle calls to /. */
-    http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
-        fmt.Fprint(res, "Hello world!")
-    })
+    /* Setup static content serving. */
+    fs := http.FileServer(http.Dir("client"))
 
-    /* Listen on PORT env variable. */
+    /* Listen on env:PORT. */
     err := http.ListenAndServe(":" + os.Getenv("PORT"), nil)
     if err != nil {
         log.Fatal("ListenAndServe error: ", err)
