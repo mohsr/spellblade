@@ -14,7 +14,7 @@ func main() {
     }
 
     /* Setup static content serving. */
-    fs := http.FileServer(http.Dir("client"))
+    http.Handle("/", http.FileServer(http.Dir("client")))
 
     /* Listen on env:PORT. */
     err := http.ListenAndServe(":" + port, nil)
