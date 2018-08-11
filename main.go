@@ -1,19 +1,24 @@
 package main
 
 import (
-    "fmt"
     "log"
     "net/http"
     "os"
 )
 
 func main() {
+    /* Grab environment variables. */
+    port := os.Getenv("PORT")
+    if port != nil {
+        port = 80
+    }
+
     /* Setup static content serving. */
     fs := http.FileServer(http.Dir("client"))
 
     /* Listen on env:PORT. */
-    err := http.ListenAndServe(":" + os.Getenv("PORT"), nil)
+    err := http.ListenAndServe(":" + port, nil)
     if err != nil {
-        log.Fatal("ListenAndServe error: ", err)
+        log.Fatal("Error: ", err)
     }
 }
