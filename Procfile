@@ -1,1 +1,1 @@
-web: spellblade
+web: go run main.go
