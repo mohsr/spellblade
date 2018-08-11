@@ -4,6 +4,7 @@ import (
     "fmt"
     "log"
     "net/http"
+    "os"
 )
 
 func main() {
@@ -12,8 +13,8 @@ func main() {
         fmt.Fprint(res, "Hello world!")
     })
 
-    /* Listen on port 8080. */
-    err := http.ListenAndServe(":8080", nil)
+    /* Listen on PORT env variable. */
+    err := http.ListenAndServe(":" + os.Getenv("PORT"), nil)
     if err != nil {
         log.Fatal("ListenAndServe error: ", err)
     }
