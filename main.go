@@ -9,7 +9,7 @@ import (
 func main() {
     /* Grab environment variables. */
     port := os.Getenv("PORT")
-    if port != nil {
+    if port == "" {
         port = "80"
     }
 
