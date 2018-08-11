@@ -1,1 +1,1 @@
-web: node app.js
+web: go run app.go
