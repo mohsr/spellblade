@@ -1,9 +1,9 @@
 # spellblade
-A browser-based text-based MMORPG built on Node.js
+A browser-based text-based MMORPG built on Go
 
 Written by: Mohsin Rizvi
 
-Last edited: 06/24/2018
+Last edited: 08/10/2018
 
 # *README*
 
@@ -15,9 +15,11 @@ possibly adding the ability to easily play from the command line using bash.
 
 # B. The Plan
 
-The server backend of the game will be built using Node.js hosted on 
-Heroku with MongoDB hosted by mLab as a database. The frontend will be 
-relatively simple and will use basic HTML5 and CSS.
+The server backend of the game will be built using Go hosted on Heroku
+with MongoDB hosted by mLab as a database. The frontend will be relatively
+simple and will use basic HTML5 and CSS, though maybe I'll use a framework 
+for it in the future (this project is mostly an exercise in backend 
+development for now).
 
 # C. Gameplay
 
