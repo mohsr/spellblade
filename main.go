@@ -2,6 +2,8 @@ package main
 
 import (
     "encoding/json"
+    "golang.org/x/net/context"
+    "google.golang.org/api/option"
     "log"
     "net/http"
     "os"
@@ -9,7 +11,10 @@ import (
     firebase "firebase.google.com/go"
 )
 
-type Result struct {
+/*
+ * Holds the response of parsing a text command.
+ */
+type Response struct {
     Text  string
     Color string
 }
@@ -21,23 +26,28 @@ func main() {
         port = "8080"
     }
 
-    /* Setup Cloud Firestore. */
-    conf := &firebase.Config{ProjectID: "firebase-go"}
-    app, err := firebase.NewApp(ctx, conf)
+    /* Setup Cloud Firestore with service account. */
+    ctx := context.Background()
+    sa := option.WithCredentialsFile("spellblade-go-private-key.json")
+    app, err := firebase.NewApp(ctx, nil, sa)
     if err != nil {
         log.Fatalln(err)
     }
-    client, err := app.Firestore(ctx)
+    db, err := app.Firestore(ctx)
     if err != nil {
         log.Fatalln(err)
     }
-    defer client.Close()
+    defer db.Close()
 
     /* Serve static content. */
     files := http.FileServer(http.Dir("client"))
     http.Handle("/", files)
 
-    /* POST a text command. */
+    /* 
+     * POST a text command.
+     * Route:  /cmd
+     * Schema: {"txt": "commandtexthere"}
+     */
     http.HandleFunc("/cmd", func(w http.ResponseWriter, r *http.Request) {
         /* Enforce POST method. */
         if r.Method != "POST" {
@@ -46,7 +56,7 @@ func main() {
         }
 
         /* Create a response object to send back as JSON. */
-        res := Result{Text: "Sorry, invalid command!", Color: "Red"}
+        res := Response{Text: "Sorry, invalid command!", Color: "Red"}
 
         /* Parse the command and formulate the appropriate response. */
         if txt := r.FormValue("txt"); txt != "" {
@@ -64,7 +74,7 @@ func main() {
     })
 
     /* Listen on a port. */
-    err := http.ListenAndServe(":" + port, nil)
+    err = http.ListenAndServe(":" + port, nil)
     if err != nil {
         log.Fatalln(err)
     }
