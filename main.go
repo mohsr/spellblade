@@ -2,6 +2,7 @@ package main
 
 import (
     "encoding/json"
+    "cloud.google.com/go/firestore"
     "log"
     "net/http"
     "os"
