@@ -2,7 +2,7 @@ package main
 
 import (
     "encoding/json"
-    "context"
+    // "context"
     // "google.golang.org/api/option"
     "log"
     "net/http"
@@ -76,7 +76,7 @@ func main() {
     })
 
     /* Listen on a port. */
-    err = http.ListenAndServe(":" + port, nil)
+    err := http.ListenAndServe(":" + port, nil)
     if err != nil {
         log.Fatalln(err)
     }
