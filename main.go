@@ -2,10 +2,11 @@ package main
 
 import (
     "encoding/json"
-    // "cloud.google.com/go/firestore"
     "log"
     "net/http"
     "os"
+
+    firebase "firebase.google.com/go"
 )
 
 type Result struct {
@@ -19,6 +20,18 @@ func main() {
     if port == "" {
         port = "8080"
     }
+
+    /* Setup Cloud Firestore. */
+    conf := &firebase.Config{ProjectID: "firebase-go"}
+    app, err := firebase.NewApp(ctx, conf)
+    if err != nil {
+        log.Fatalln(err)
+    }
+    client, err := app.Firestore(ctx)
+    if err != nil {
+        log.Fatalln(err)
+    }
+    defer client.Close()
 
     /* Serve static content. */
     files := http.FileServer(http.Dir("client"))
@@ -44,7 +57,7 @@ func main() {
         /* Create and write the JSON. */
         js, err := json.Marshal(res)
         if err != nil {
-            log.Fatal("Error: ", err)
+            http.Error(w, "Could not form JSON.", 500)
         }
         w.Header().Set("Content-Type", "application/json")
         w.Write(js)
@@ -53,6 +66,6 @@ func main() {
     /* Listen on a port. */
     err := http.ListenAndServe(":" + port, nil)
     if err != nil {
-        log.Fatal("Error: ", err)
+        log.Fatalln(err)
     }
 }
