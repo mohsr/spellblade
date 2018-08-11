@@ -2,15 +2,14 @@ package main
 
 import (
     "encoding/json"
-    "github.com/gorilla/mux"
     "log"
     "net/http"
     "os"
 )
 
-type result struct {
-    text  string
-    color string
+type Result struct {
+    Text  string
+    Color string
 }
 
 func main() {
@@ -20,33 +19,38 @@ func main() {
         port = "8080"
     }
 
-    /* Setup server router. */
-    r := mux.NewRouter()
+    /* Serve static content. */
+    files := http.FileServer(http.Dir("client"))
+    http.Handle("/", files)
 
     /* POST a text command. */
-    r.HandleFunc("/cmd", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/cmd", func(w http.ResponseWriter, r *http.Request) {
+        /* Enforce POST method. */
+        if r.Method != "POST" {
+            http.Error(w, "Bad request method.", 405)
+            return
+        }
+
         /* Create a response object to send back as JSON. */
-        res := result{text: "Sorry", color: "Red"}
+        res := Result{Text: "Sorry, invalid command!", Color: "Red"}
 
         /* Parse the command and formulate the appropriate response. */
         if txt := r.FormValue("txt"); txt != "" {
-            res.text  = "Sorry, invalid command!"
-            res.color = "Red"
+            res.Text  = "TOBEPARSED"
+            res.Color = "White"
         } 
 
+        /* Create and write the JSON. */
         js, err := json.Marshal(res)
         if err != nil {
             log.Fatal("Error: ", err)
         }
-
         w.Header().Set("Content-Type", "application/json")
         w.Write(js)
-    }).Methods("POST")
-
-    r.PathPrefix("/").Handler(http.FileServer(http.Dir("client")))
+    })
 
     /* Listen on a port. */
-    err := http.ListenAndServe(":" + port, r)
+    err := http.ListenAndServe(":" + port, nil)
     if err != nil {
         log.Fatal("Error: ", err)
     }
