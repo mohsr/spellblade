@@ -23,9 +23,9 @@ type Response struct {
 
 func main() {
     /* Grab environment variables. */
-    port := os.Getenv("server.port")
-    if port == "" {
-        port = "8080"
+    PORT := os.Getenv("PORT")
+    if PORT == "" {
+        PORT = "8080"
     }
 
     /* Setup Cloud Firestore with service account. */
@@ -76,7 +76,7 @@ func main() {
     })
 
     /* Listen on a port. */
-    err := http.ListenAndServe(":" + port, nil)
+    err := http.ListenAndServe(":" + PORT, nil)
     if err != nil {
         log.Fatalln(err)
     }
