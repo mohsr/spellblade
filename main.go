@@ -13,6 +13,8 @@ import (
 
 /*
  * Holds the response of parsing a text command.
+ * Schema: {"Text":  The response text to send back.
+ *          "Color": The color of the response text to display.}
  */
 type Response struct {
     Text  string
@@ -21,7 +23,10 @@ type Response struct {
 
 func main() {
     /* Grab environment variables. */
-    port := os.Getenv("PORT")
+    port := os.Getenv("server.port")
+    if port == "80" {
+        return
+    }
     if port == "" {
         port = "8080"
     }
@@ -46,7 +51,7 @@ func main() {
     /* 
      * POST a text command.
      * Route:  /cmd
-     * Schema: {"txt": "commandtexthere"}
+     * Schema: {"txt": Text of the command entered.}
      */
     http.HandleFunc("/cmd", func(w http.ResponseWriter, r *http.Request) {
         /* Enforce POST method. */
