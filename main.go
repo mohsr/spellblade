@@ -3,12 +3,12 @@ package main
 import (
     "encoding/json"
     "context"
-    "google.golang.org/api/option"
+    // "google.golang.org/api/option"
     "log"
     "net/http"
     "os"
 
-    firebase "firebase.google.com/go"
+    // firebase "firebase.google.com/go"
 )
 
 /*
@@ -24,25 +24,22 @@ type Response struct {
 func main() {
     /* Grab environment variables. */
     port := os.Getenv("server.port")
-    if port == "80" {
-        return
-    }
     if port == "" {
         port = "8080"
     }
 
     /* Setup Cloud Firestore with service account. */
-    ctx := context.Background()
-    sa := option.WithCredentialsFile("spellblade-go-private-key.json")
-    app, err := firebase.NewApp(ctx, nil, sa)
-    if err != nil {
-        log.Fatalln(err)
-    }
-    db, err := app.Firestore(ctx)
-    if err != nil {
-        log.Fatalln(err)
-    }
-    defer db.Close()
+    // ctx := context.Background()
+    // sa := option.WithCredentialsFile("spellblade-go-private-key.json")
+    // app, err := firebase.NewApp(ctx, nil, sa)
+    // if err != nil {
+    //     log.Fatalln(err)
+    // }
+    // db, err := app.Firestore(ctx)
+    // if err != nil {
+    //     log.Fatalln(err)
+    // }
+    // defer db.Close()
 
     /* Serve static content. */
     files := http.FileServer(http.Dir("client"))
