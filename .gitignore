@@ -12,4 +12,4 @@
 *.out
 
 # Ignore Cloud Firestore key
-spellblade-go-private-key.json
+spellblade-game-private-key.json
