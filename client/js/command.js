@@ -7,6 +7,12 @@ $(document).ready(function() {
 });
 
 function submitCommand() {
+	var box = $('#writebox');
+	var data = box.val().trim();
+	if (data == '') {
+		return;
+	}
+
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', '/cmd');
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -16,8 +22,6 @@ function submitCommand() {
 			showMessage(returned.Text, returned.Color, true);
 		}
 	}
-	var box = $('#writebox');
-	var data = box.val();
 	box.val('');
 	showMessage(data, "White", false);
 	xhr.send('txt=' + data);

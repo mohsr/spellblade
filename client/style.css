@@ -25,9 +25,17 @@ body {
 }
 
 .red {
-	color: red;
+	color: crimson;
 }
 
 .green {
-	color: green;
+	color: lightgreen;
+}
+
+.gold {
+	color: gold;
+}
+
+.purple {
+	color: magenta;
 }

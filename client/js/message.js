@@ -6,18 +6,8 @@ function showMessage(text, color, isResponse) {
 		html += '==> ';
 	}
 
-	html += '<span class="response ';	
-	switch (color) {
-		case "White":
-			html += 'white';
-			break;
-		case "Red":
-			html += 'red';
-			break;
-		case "Green":
-			html += 'green';
-			break;
-	}
+	html += '<span class="response ';
+	html += color.toLowerCase();
 	html += ('">' + text + '</span></p>')
 	$('#textbox').append(html);
 }
