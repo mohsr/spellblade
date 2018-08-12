@@ -5,6 +5,7 @@ body {
 #title {
 	text-align: center;
 	font-size: 36px;
+	text-decoration: none;
 }
 
 #console {
@@ -18,6 +19,12 @@ body {
 #writebox {
     background-color: black;
     color: white;
+}
+
+#bottom {
+	text-align: center;
+	font-size: 12px;
+	text-decoration: none;
 }
 
 .white {
