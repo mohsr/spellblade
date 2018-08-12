@@ -4,13 +4,17 @@
         <title>Spellblade</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css" />
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/message.js"></script>
+        <script type="text/javascript" src="js/command.js"></script>
     </head>
     <body>
         <div id="title">Spellblade</div>
         <div id="console">
-            <p id="textbox">
-            </p>
-            <input id="writebox" type="text" />
+            <div id="textbox">
+            </div>
+            <input id="writebox" type="text" size="130"/>
+            <button onclick="submitCommand()">Submit</button>
         </div>
     </body>
 </html>
