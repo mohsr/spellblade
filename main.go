@@ -28,10 +28,28 @@ func main() {
     files := http.FileServer(http.Dir("client"))
     http.Handle("/", files)
 
+    /*
+     * GET about page.
+     * Route:  /about
+     * Params: n/a
+     */
+    http.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
+        http.ServeFile(w, r, "client/about.html")
+    })
+
+    /*
+     * GET FAQ page.
+     * Route:  /faq
+     * Params: n/a
+     */
+    http.HandleFunc("/faq", func(w http.ResponseWriter, r *http.Request) {
+        http.ServeFile(w, r, "client/faq.html")
+    })
+
     /* 
      * POST a text command.
      * Route:  /cmd
-     * Schema: {"txt": Text of the command entered.}
+     * Params: {"txt": Text of the command entered.}
      */
     http.HandleFunc("/cmd", func(w http.ResponseWriter, r *http.Request) {
         /* Enforce POST method. */
