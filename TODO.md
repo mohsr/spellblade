@@ -4,8 +4,6 @@ Written by: Mohsin Rizvi
 
 Last edited: 08/12/2018
 
-# *TODO*
-
 # A. Overview
 
 Here's a list of things I want to work on in the implementation of this 
