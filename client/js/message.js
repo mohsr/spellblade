@@ -1,11 +1,12 @@
 function showMessage(text, color, isResponse) {
-	var prompt;
+	var html = '<p class=wholeresponse>&nbsp;&nbsp;'
 	if (isResponse) {
-		prompt = '>>>';
+		html += '>>> ';
 	} else {
-		prompt = '==>';
+		html += '==> ';
 	}
-	var html = '<p class="response ';
+
+	html += '<span class="response ';	
 	switch (color) {
 		case "White":
 			html += 'white';
@@ -17,6 +18,6 @@ function showMessage(text, color, isResponse) {
 			html += 'green';
 			break;
 	}
-	html += ('">&nbsp;&nbsp;' + prompt + ' ' + text + '</p>');
+	html += ('">' + text + '</span></p>')
 	$('#textbox').append(html);
 }
