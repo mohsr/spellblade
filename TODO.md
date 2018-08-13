@@ -16,6 +16,7 @@ order as I implement them.
 
 # B. The List
 
+- Add changelog page
 - Implement suite of methods for easy MongoDB access
 - Design basic gameplay
 - TBD after gameplay design
