@@ -46,6 +46,15 @@ func main() {
         http.ServeFile(w, r, "client/faq.html")
     })
 
+    /*
+     * GET changelog page.
+     * Route:  /changes
+     * Params: n/a
+     */
+    http.HandleFunc("/changes", func(w http.ResponseWriter, r *http.Request) {
+        http.ServeFile(w, r, "client/changelog.html")
+    })
+
     /* 
      * POST a text command.
      * Route:  /cmd
