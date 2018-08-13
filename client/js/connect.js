@@ -33,6 +33,9 @@ function submitCommand() {
 
 function clientCommands(cmd) {
     switch(cmd) {
+        case "help":
+            help();
+            return true;
         case "clear":
             clear();
             return true;
