@@ -10,4 +10,5 @@ function showMessage(text, color, isResponse) {
 	html += color.toLowerCase();
 	html += ('">' + text + '</span></p>')
 	$('#textbox').append(html);
+	$('#textbox').scrollTop(document.getElementById('textbox').scrollHeight);
 }
