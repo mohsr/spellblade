@@ -18,8 +18,8 @@ import (
  *
  * A GAME ACTION is made up of three parts:
  *                   >>> [VERB][FILLER][TARGET]
- * The VERB is always necessary and will determine the action done. It it 
- * always precisely the first word, and is never longer than that.
+ * The VERB is always necessary and will determine the action done. It is
+ * always precisely the first word, and is never more than that.
  * The FILLER is never necessary and consists of words like "the" and "a", and
  * can be a variable amount of words.
  * The TARGET is usually necessary and will determine the target of the verb.
@@ -57,6 +57,18 @@ func Parse(res *Response, txt string) {
         return
     }
 
+    /* Check the first word of the command and do the appropriate action. */
+    switch strings.ToLower(words[0]) {
+        /* First, check for menu actions. */
+
+        /* Next, check for game actions. */
+
+        default:
+            res.Text = `Sorry, command not recognized. Type "help cmd" 
+                        for help!`
+            res.Color = "Red"
+    }
+
     res.Text = txt
     res.Color = "White"
 }
@@ -68,7 +80,7 @@ func Parse(res *Response, txt string) {
  * Parameters: res - *Response - pointer to the response to modify.
  * Return:     n/a
  */
- func BadCommand(res *Response) {
+func BadCommand(res *Response) {
     res.Text = "Sorry, invalid command!"
     res.Color = "Red"
- }
+}
