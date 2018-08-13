@@ -5,7 +5,7 @@ import (
     "log"
     "net/http"
     "os"
-    "player"
+    _ "player"
 )
 
 /*
