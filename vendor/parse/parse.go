@@ -6,7 +6,7 @@ import (
 
 /*
  * NOTES:
- * A text command is either a MENU ACTION or a GAME ACTION.
+ * A text command is either a MENU ACTION, a SAY ACTION, or a GAME ACTION.
  *
  * A command is recognized as a MENU ACTION if the first word is a recognized 
  * menu action. The format for a menu action is as follows:
@@ -14,7 +14,17 @@ import (
  * An example menu action is as follows:
  *                   >>> logout
  * If the command is not a recognized menu action, it is treated as a
- * game action. 
+ * say action or a game action depending on the first word.
+ *
+ * A SAY ACTION is made up of two parts:
+ *                   >>> say "[WORDS]"
+ * A say action always starts with "say" and is followed by a message in 
+ * quotes. This message is then displayed to other nearby players.
+ * Example say actions are as follows:
+ *                   >>> say "hi there!"
+ *                   >>> say "what's up?"
+ * If the command does not start with say and is not a recognized menu action, 
+ * then it is treated as a game action.
  *
  * A GAME ACTION is made up of three parts:
  *                   >>> [VERB][FILLER][TARGET]
