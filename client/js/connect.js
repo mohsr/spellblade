@@ -36,6 +36,15 @@ function clientCommands(cmd) {
         case "help":
             help();
             return true;
+        case "help menu":
+            helpMenu();
+            return true;
+        case "help say":
+            helpSay();
+            return true;
+        case "help game":
+            helpGame();
+            return true;
         case "clear":
             clear();
             return true;
