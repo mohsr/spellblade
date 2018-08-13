@@ -59,7 +59,7 @@ func main() {
         }
 
         /* Create a response object to send back as JSON. */
-        res := Response{Text: "Sorry, invalid command!", Color: "Red"}
+        res := parse.Response{Text: "Sorry, invalid command!", Color: "Red"}
 
         /* Parse the command and formulate the appropriate response. */
         if txt := r.FormValue("txt"); txt != "" {
