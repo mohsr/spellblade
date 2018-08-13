@@ -51,7 +51,11 @@ type Response struct {
 func Parse(res *Response, txt string) {
     /* Break up the words. */
     words := strings.Fields(txt)
-    println(words)
+
+    /* TESTING -- print the words. */
+    for i := 0; i < len(words); i++ {
+        println(words[i])
+    }
 
     res.Text = txt
     res.Color = "White"
