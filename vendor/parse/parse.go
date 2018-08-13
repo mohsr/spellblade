@@ -50,7 +50,8 @@ type Response struct {
  */
 func Parse(res *Response, txt string) {
     /* Break up the words. */
-    _ words := strings.Fields(txt)
+    words := strings.Fields(txt)
+    _ words
 
     res.Text = txt
     res.Color = "White"
