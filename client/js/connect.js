@@ -12,7 +12,7 @@ function submitCommand() {
     if (data == '') {
         return;
     }
-    if (clientCommands(data)) {
+    if (clientCommands(data.toLowerCase())) {
         box.val('');
         return;
     }

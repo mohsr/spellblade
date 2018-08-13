@@ -1,4 +1,8 @@
 function showMessage(text, color, isResponse) {
+    if (text == '') {
+        return;
+    }
+
     var html = '<p class=wholeresponse>&nbsp;&nbsp;'
     if (isResponse) {
         html += '>>> ';

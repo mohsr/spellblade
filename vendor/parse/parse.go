@@ -2,6 +2,7 @@ package parse
 
 import (
     "strings"
+    "say"
 )
 
 /*
@@ -19,7 +20,8 @@ import (
  * A SAY ACTION is made up of two parts:
  *                   >>> say "[WORDS]"
  * A say action always starts with "say" and is followed by a message in 
- * quotes. This message is then displayed to other nearby players.
+ * quotes. This message is then displayed to other nearby players. Any 
+ * content between "say" and the beginning of the quotes is ignored.
  * Example say actions are as follows:
  *                   >>> say "hi there!"
  *                   >>> say "what's up?"
@@ -71,7 +73,10 @@ func Parse(res *Response, txt string) {
     switch strings.ToLower(words[0]) {
         /* First, check for menu actions. */
 
-        /* Next, check for game actions. */
+        /* Next, check if it's a say action. */
+        case "say":
+            res.Text, res.Color = say.ParsedSay(txt);
+        /* Lastly, check for game actions. */
 
         default:
             res.Text = "Sorry, command not recognized. Type \"help\" for help!"
