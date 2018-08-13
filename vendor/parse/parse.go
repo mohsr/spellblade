@@ -64,8 +64,7 @@ func Parse(res *Response, txt string) {
         /* Next, check for game actions. */
 
         default:
-            res.Text = `Sorry, command not recognized. Type "help cmd" 
-                        for help!`
+            res.Text = "Sorry, command not recognized. Type \"help\" for help!"
             res.Color = "Red"
     }
 }
