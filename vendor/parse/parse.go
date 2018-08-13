@@ -68,9 +68,6 @@ func Parse(res *Response, txt string) {
                         for help!`
             res.Color = "Red"
     }
-
-    res.Text = txt
-    res.Color = "White"
 }
 
 /*
