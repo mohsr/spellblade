@@ -5,18 +5,8 @@ import (
     "log"
     "net/http"
     "os"
-    _ "player"
+    "parse"
 )
-
-/*
- * Holds the response of parsing a text command.
- * Schema: {"Text":  The response text to send back.
- *          "Color": The color of the response text to display.}
- */
-type Response struct {
-    Text  string
-    Color string
-}
 
 func main() {
     /* Grab environment variables. */
@@ -73,8 +63,7 @@ func main() {
 
         /* Parse the command and formulate the appropriate response. */
         if txt := r.FormValue("txt"); txt != "" {
-            res.Text  = "TOBEPARSED"
-            res.Color = "White"
+            parse.Parse(&res, txt)
         } 
 
         /* Create and write the JSON. */

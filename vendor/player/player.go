@@ -18,11 +18,12 @@ type Player struct {
 
 /*
  * NewPlayer
- * Purpose:    Generate a new player.
+ * Purpose:    Generate a new Player.
  * Parameters: name - string - the name of the character.
  *             class - string - the class of the character.
  *             height - string - the height of the character.
  *             hair - string - the hair color of the character.
+ * Return:     The newly generated Player instance.
  */
 func NewPlayer(name string, class string, height string, hair string) Player {
     p := Player{Name: name, Class: class, Height: height, Hair: hair, Level: 1}
