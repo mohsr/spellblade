@@ -18,7 +18,8 @@ import (
  *
  * A GAME ACTION is made up of three parts:
  *                   >>> [VERB][FILLER][TARGET]
- * The VERB is always necessary and will determine the action done.
+ * The VERB is always necessary and will determine the action done. It it 
+ * always precisely the first word, and is never longer than that.
  * The FILLER is never necessary and consists of words like "the" and "a", and
  * can be a variable amount of words.
  * The TARGET is usually necessary and will determine the target of the verb.
@@ -46,17 +47,28 @@ type Response struct {
  *                               action result in.
  *             txt - string - the text to be parsed.
  * Return:     n/a
- *
  */
 func Parse(res *Response, txt string) {
     /* Break up the words. */
     words := strings.Fields(txt)
 
-    /* TESTING -- print the words. */
-    for i := 0; i < len(words); i++ {
-        println(words[i])
+    if len(words) == 0 || strings.Contains(strings.ToLower(txt), "script") {
+        BadCommand(res)
+        return
     }
 
     res.Text = txt
     res.Color = "White"
 }
+
+/*
+ * BadCommand
+ * Purpose:    Modifies a given pointed-to response to say that the 
+ *             command was invalid.
+ * Parameters: res - *Response - pointer to the response to modify.
+ * Return:     n/a
+ */
+ func BadCommand(res *Response) {
+    res.Text = "Sorry, invalid command!"
+    res.Color = "Red"
+ }
