@@ -12,6 +12,10 @@ function submitCommand() {
 	if (data == '') {
 		return;
 	}
+	if (clientCommands(data)) {
+		box.val('');
+		return;
+	}
 
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', '/cmd');
@@ -25,4 +29,16 @@ function submitCommand() {
 	box.val('');
 	showMessage(data, "White", false);
 	xhr.send('txt=' + data);
+}
+
+function clientCommands(cmd) {
+	switch(cmd) {
+		case "help":
+			help();
+			return true;
+		case "clear":
+			clear();
+			return true;
+	}
+	return false;
 }
