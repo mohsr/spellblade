@@ -3,5 +3,5 @@ function help() {
 }
 
 function clear() {
-	document.getElementById('textbox').innerHTML = '';
+    document.getElementById('textbox').innerHTML = '';
 }

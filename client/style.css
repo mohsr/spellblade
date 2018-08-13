@@ -1,18 +1,18 @@
 body {
-	background-color: darkgray;
+    background-color: darkgray;
 }
 
 #title {
-	text-align: center;
-	font-size: 36px;
-	text-decoration: none;
+    text-align: center;
+    font-size: 36px;
+    text-decoration: none;
 }
 
 #console {
-	background-color: black;
-	border-style: double;
-	border-color: white;
-	color: white;
+    background-color: black;
+    border-style: double;
+    border-color: white;
+    color: white;
     width: 100%;
     min-height: 75vh;
     max-height: 75vh;
@@ -35,27 +35,27 @@ body {
 }
 
 #links {
-	text-align: center;
-	font-size: 12px;
-	text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    text-decoration: none;
 }
 
 .white {
-	color: white;
+    color: white;
 }
 
 .red {
-	color: crimson;
+    color: crimson;
 }
 
 .green {
-	color: lightgreen;
+    color: lightgreen;
 }
 
 .gold {
-	color: gold;
+    color: gold;
 }
 
 .purple {
-	color: magenta;
+    color: magenta;
 }
