@@ -74,6 +74,8 @@ func Parse(res *Response, txt string) {
     /* Check the first word of the command and do the appropriate action. */
     switch strings.ToLower(words[0]) {
         /* First, check for menu actions. */
+        case "login":
+            res.Text, res.Color = menu.LogIn();
         case "logout":
             res.Text, res.Color = menu.Logout();
         /* Next, check if it's a say action. */
