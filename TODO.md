@@ -16,6 +16,6 @@ order as I implement them.
 
 # B. The List
 
-- Implement suite of methods for easy MongoDB access
+- Implement login/logout functionality
 - Design basic gameplay
 - TBD after gameplay design
