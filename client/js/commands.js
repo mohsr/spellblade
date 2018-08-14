@@ -10,6 +10,8 @@ function help() {
 
 function helpMenu() {
 	showMessage("Help - menu actions", "Gold", true);
+	showMessage("Login - logs the player into the game.", "White", true);
+	showMessage("Logout - logs the player out of the game.", "White", true);
 }
 
 function helpSay() {
@@ -22,7 +24,8 @@ function helpSay() {
 
 function helpGame() {
 	showMessage("Help - game actions", "Gold", true);
-
+	showMessage("Search - searches the current area the player is in.", 
+		        "White", true);
 }
 
 function clear() {
