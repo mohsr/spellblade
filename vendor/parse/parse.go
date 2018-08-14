@@ -1,6 +1,8 @@
 package parse
 
 import (
+    "game"
+    "menu"
     "strings"
     "say"
 )
@@ -72,12 +74,14 @@ func Parse(res *Response, txt string) {
     /* Check the first word of the command and do the appropriate action. */
     switch strings.ToLower(words[0]) {
         /* First, check for menu actions. */
-
+        case "logout":
+            res.Text, res.Color = menu.Logout();
         /* Next, check if it's a say action. */
         case "say":
             res.Text, res.Color = say.ParsedSay(txt);
         /* Lastly, check for game actions. */
-
+        case "search":
+            res.Text, res.Color = game.Search();
         default:
             res.Text = "Sorry, command not recognized. Type \"help\" for help!"
             res.Color = "Red"
